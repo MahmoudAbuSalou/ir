@@ -73,7 +73,7 @@ def predictWithCluster():
     return jsonify(predicted_documents)
 
 @app.route('/get_query_with_topic', methods=['POST'])
-def predictWithCluster():
+def predictWithTopic():
     query = request.form['kewword']
     predicted_documents = implmentTopicAlg(query, tfidf_matrix, temp, data_title, cluster_labels,keys)
     evaluations=eval(query)
