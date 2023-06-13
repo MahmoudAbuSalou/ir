@@ -6,10 +6,12 @@ from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.cluster import KMeans
 from data_processing import preprocess_text
 # Create a TfidfVectorizer object
-vectorizer = TfidfVectorizer()
-def readFileCluster():
+def readFileCluster(data_set):
 # Specify the file path for the CSV file
-    file_path = 'C:/Users/User/.ir_datasets/beir/webis-touche2020/webis-touche2020/cluster_labels.csv'
+    if data_set == 1:
+        file_path = 'C:/Users/User/.ir_datasets/beir/webis-touche2020/webis-touche2020/cluster_labels.csv'
+    elif data_set == 2:
+        file_path = 'C:/Users/User/.ir_datasets/cord19/2020-06-19/files/cluster_labels.csv'
 
 # Read the CSV file into a DataFrame
     cluster_data = pd.read_csv(file_path)
@@ -19,8 +21,8 @@ def readFileCluster():
     return cluster_labels
 
 
-def implmentClusterAlg(query,tfidf_matrix, temp, data_title,cluster_labels,keys):
-
+def implmentClusterAlg(query,tfidf_matrix, temp, data_title,cluster_labels,keys,vectorizer):
+    predicted_documents = []
     pureQuery = query
 
     query=preprocess_text(query)
@@ -40,14 +42,16 @@ def implmentClusterAlg(query,tfidf_matrix, temp, data_title,cluster_labels,keys)
     cluster_similarities = cosine_similarities[0, cluster_indices]
     sorted_indices = np.array(cluster_indices)[np.argsort(cluster_similarities)[::-1]]
     # Get the predicted documents
+    
+
+    top_indices = sorted_indices[:20]
     predicted_documents += [list(keys)[idx] for idx in top_indices]
+    result={}
+    result['predicted_documents']=predicted_documents
+    result['count_result']=len(cluster_indices)
+    
+   
 
-    top_indices = sorted_indices[:10]
-
-    # Print the most similar documents and their similarity scores
-    for idx in top_indices:
-        most_similar_document_key = list(temp.keys())[idx]
-        print("Title:", data_title[str(most_similar_document_key)])
-
+    return result   
 
 

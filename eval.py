@@ -1,14 +1,14 @@
 
 import json
 
-data=[]
+
 def get_id_from_text(text):
     with open(r'C:\Users\User\.ir_datasets\beir\webis-touche2020\webis-touche2020\queries.jsonl', 'r') as file:
         for line in file:
             data = json.loads(line)
             if data['text'] == text:
                 return data['_id']
-    return None
+    return 1
 
 
 
@@ -18,6 +18,7 @@ def get_id_from_text(text):
 
 
 def readQrels(query_number):
+    data=[]
     i = 0
     with open(r'C:\Users\User\.ir_datasets\beir\webis-touche2020\webis-touche2020\qrels\test.tsv', 'r') as file:
         for line in file:
@@ -31,8 +32,7 @@ def readQrels(query_number):
                 pass  # Skip non-integer lines
             i += 1
 
-    print(data[0])
-    print(data[-1])
+
     return data
 
 
@@ -47,12 +47,11 @@ def precision_at_k(actual, predicted, k):
     if len(predicted) > k:
         predicted = predicted[:k]
     tp = len(set(actual) & set(predicted))
-    print(len(predicted))
     precision = tp / len(predicted)
     return precision
 
-def eval(pureQuery):
-    readQrels( get_id_from_text(pureQuery))
+def eval(pureQuery,predicted_documents):
+    data=readQrels( get_id_from_text(pureQuery))
     relevant_documents = [] 
     with open(r'C:\Users\User\.ir_datasets\beir\webis-touche2020\webis-touche2020\qrels\test.tsv', 'r') as file:
         i = 0   
