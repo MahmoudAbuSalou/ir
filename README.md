@@ -26,14 +26,31 @@ enhancement I mentioned (topic algorithm using LatentDirichletAllocation, cluste
  how each enhancement improves the search engine's performance or user experience:
  Rank the documents based on their cosine similarity values. Higher cosine similarity values indicate higher similarity to the query.
  suggistions:
+ 
+ 
  ![photo_2023-06-14_00-07-13](https://github.com/MahmoudAbuSalou/ir/assets/87876527/1b6f57e4-3737-405f-9e32-2533179da812)
+ 
+ 
  using clustring Reducing the search circle within the documants:
+ 
+ 
  ![Screenshot (153)](https://github.com/MahmoudAbuSalou/ir/assets/87876527/3cbd1eef-4187-4278-826f-d226f38e81f6)
+ 
+ 
+ 
 **Evaluation Metrics:**
  the evaluation metrics you calculated (Precision@10, Precision, Recall, MAP, MRR).
+ 
+ 
  ![Screenshot (152)](https://github.com/MahmoudAbuSalou/ir/assets/87876527/d398786e-07b6-4b76-8d3d-eef09a541481)
+ 
+ 
  **mpoile app to active and interaction on data sets**
+ 
+ 
  ![photo_2023-06-14_00-06-49](https://github.com/MahmoudAbuSalou/ir/assets/87876527/d9dfb0d1-af1d-40ae-a247-ea8445a902a4)
+ 
+ 
 
  **Conclusion:**
 1.Information Retrieval: The search engine provides a means for users to retrieve relevant documents from the COVID-19 and BIRE datasets based on their queries.     It leverages various techniques to improve retrieval accuracy and efficiency.
